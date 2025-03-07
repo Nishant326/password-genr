@@ -1,25 +1,24 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 
 function App() {
-  const [length, setLength] = useState(8)
+  const [length, setLength] = useState(8);
   const [numberAllowed, setNumberAllowed] = useState(false);
   const [cahrAllowed, setCharAllowed] = useState(false);
   const [Passworde, setPassowrd] = useState("");
-  const passwordRef = useRef(null)
+  const passwordRef = useRef(null);
 
 
   const passwordGenerator = useCallback(() => {
-    let pass = ""
-    let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwwxyz"
-    if (numberAllowed) str += "0123456789"
-    if (cahrAllowed) str += "@ # $ % & * + = ? ..."
+    let pass = "";
+    let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwwxyz";
+    if (numberAllowed) str += "0123456789";
+    if (cahrAllowed) str += "@ # $ % & * + = ? ...";
     for (let i = 1; i <= length; i++) {
-      let char = Math.floor(Math.random() * str.length + 1)
-      pass += str.charAt(char)
-    }
-    setPassowrd(pass)
-  }, [length,
-    numberAllowed, cahrAllowed, setPassowrd])
+      let char = Math.floor(Math.random() * str.length + 1);
+      pass += str.charAt(char);
+    };
+    setPassowrd(pass);
+  }, [length,numberAllowed, cahrAllowed, setPassowrd])
 
   const copyPasswordToClipboard = useCallback(() => {
     passwordRef.current?.select()
